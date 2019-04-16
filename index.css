@@ -1,0 +1,22 @@
+body{
+    /* 因为body的默认边界为8px */
+    margin: 0;
+}
+#canvas_{
+    background: gainsboro;
+}
+
+.actions{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+.actions > #brush{
+    display: none;
+}
+.actions.x > #brush{
+    display: inline-block;
+}
+.actions.x > #eraser{
+    display: none;
+}
