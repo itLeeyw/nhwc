@@ -1,18 +1,19 @@
-document.body.ontouchstart = function(e){
-    e.preventDefault()
-}
 var _canvas = document.getElementById("canvas_")//获取画布id
 var context = _canvas.getContext('2d')//获取二维上下文
 var linewidth = 10;//默认线粗
 var eraserEnabled = false
+var History = [];
+//默认颜色
+context.fillStyle = 'red'
+context.strokeStyle = 'red'
 
 autoSetCanvasSize(_canvas)
 listenToUser(_canvas)
 
+//设置画笔size
 small.onclick = function(){ linewidth = 5 }
 mid.onclick = function(){ linewidth = 10 }
 large.onclick = function(){ linewidth = 18 }
-
 
 pen.onclick = function(){
     eraserEnabled = false;
@@ -23,6 +24,16 @@ eraser.onclick = function(){
     eraserEnabled = true;
     eraser.classList.add("active")
     pen.classList.remove("active")   
+}
+
+function saveData (data){
+    (History.length === 10)&&(History.shift());//存储上限为10,如果大于10则删除第一个且返回值
+    History.push(data);//传入数据,想最后一个位置传入数据
+}
+rreturn.onclick = function(){
+    if(History.length < 1) return false;
+    context.putImageData(History[History.length - 1], 0, 0);
+    History.pop(); 
 }
 //清空
 clear.onclick = function(){
@@ -40,9 +51,6 @@ save.onclick = function(){
 }
 
 colors = [red,green,blue]
-
-context.fillStyle = 'red'
-context.strokeStyle = 'red'
 red.onclick = function(){     
     context.fillStyle = 'red'
     context.strokeStyle = 'red'
@@ -96,6 +104,8 @@ function listenToUser(canvas){//监听鼠标动作
     if(document.body.ontouchstart !== undefined){//特性检测
         //支持触屏设备
         canvas.ontouchstart = function(r){
+            firstDot = context.getImageData(0, 0, canvas.width, canvas.height);
+            saveData(this.firstDot);
             console.log("ontouchstart");
             var x = r.touches[0].clientX;
             var y = r.touches[0].clientY;
@@ -129,6 +139,8 @@ function listenToUser(canvas){//监听鼠标动作
     }else{
         //不支持触屏设备
         canvas.onmousedown = function(r){
+            firstDot = context.getImageData(0, 0, canvas.width, canvas.height);
+            saveData(this.firstDot);
             console.log("onmousestart");
             //首先获取到client当前鼠标位置
             var x = r.clientX;
@@ -173,6 +185,9 @@ function listenToUser(canvas){//监听鼠标动作
     function drawLine(x1, y1, x2, y2) {//两点之间连线
         context.beginPath()//开始绘制
         context.moveTo(x1, y1);
+        //清楚锯齿
+        context.lineCap = "round";
+        context.lineJoin = "round";
         context.lineWidth = linewidth;
         context.lineTo(x2, y2);
         context.stroke();//填充border
