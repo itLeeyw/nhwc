@@ -30,11 +30,13 @@ function saveData (data){
     (History.length === 10)&&(History.shift());//存储上限为10,如果大于10则删除第一个且返回值
     History.push(data);//传入数据,想最后一个位置传入数据
 }
-rreturn.onclick = function(){
+rreturn.onclick = function(a){
     if(History.length < 1) return false;
     context.putImageData(History[History.length - 1], 0, 0);
     History.pop(); 
 }
+
+
 //清空
 clear.onclick = function(){
     context.clearRect(0, 0, _canvas.width, _canvas.height)
@@ -104,8 +106,8 @@ function listenToUser(canvas){//监听鼠标动作
     if(document.body.ontouchstart !== undefined){//特性检测
         //支持触屏设备
         canvas.ontouchstart = function(r){
-            firstDot = context.getImageData(0, 0, canvas.width, canvas.height);
-            saveData(this.firstDot);
+            firstDot = context.getImageData(0, 0, _canvas.width, _canvas.height);
+            saveData(firstDot);
             console.log("ontouchstart");
             var x = r.touches[0].clientX;
             var y = r.touches[0].clientY;
@@ -139,8 +141,8 @@ function listenToUser(canvas){//监听鼠标动作
     }else{
         //不支持触屏设备
         canvas.onmousedown = function(r){
-            firstDot = context.getImageData(0, 0, canvas.width, canvas.height);
-            saveData(this.firstDot);
+            firstDot = context.getImageData(0, 0, _canvas.width, _canvas.height);
+            saveData(firstDot);
             console.log("onmousestart");
             //首先获取到client当前鼠标位置
             var x = r.clientX;
