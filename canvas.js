@@ -1,13 +1,17 @@
 var _canvas = document.getElementById("canvas_")//获取画布id
 
 var context = _canvas.getContext('2d')//获取二维上下文
+var linewidth = 10;//默认线粗
+var eraserEnabled = false
 
 autoSetCanvasSize(_canvas)
 listenToUser(_canvas)
 
+small.onclick = function(){ linewidth = 5 }
+mid.onclick = function(){ linewidth = 10 }
+large.onclick = function(){ linewidth = 18 }
 
 
-var eraserEnabled = false
 pen.onclick = function(){
     eraserEnabled = false;
     pen.classList.add("active");
@@ -18,14 +22,28 @@ eraser.onclick = function(){
     eraser.classList.add("active")
     pen.classList.remove("active")   
 }
+//清空
+clear.onclick = function(){
+    context.clearRect(0, 0, _canvas.width, _canvas.height)
+}
+//保存
+save.onclick = function(){
+    var url = _canvas.toDataURL("image/png")
+    console.log(url)
+    var _a = document.createElement('a')
+    document.body.appendChild(_a)
+    _a.href = url
+    _a.download = 'saveDraw'
+    _a.click()
+}
 
 colors = [red,green,blue]
 
 context.fillStyle = 'red'
 context.strokeStyle = 'red'
 red.onclick = function(){     
-    // context.fillStyle = 'red'
-    // context.strokeStyle = 'red'
+    context.fillStyle = 'red'
+    context.strokeStyle = 'red'
     onColor(red);
 }
 green.onclick = function(){
@@ -153,7 +171,7 @@ function listenToUser(canvas){//监听鼠标动作
     function drawLine(x1, y1, x2, y2) {//两点之间连线
         context.beginPath()//开始绘制
         context.moveTo(x1, y1);
-        context.lineWidth = 10;
+        context.lineWidth = linewidth;
         context.lineTo(x2, y2);
         context.stroke();//填充border
         context.closePath();//结束绘制

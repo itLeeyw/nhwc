@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="//at.alicdn.com/t/font_1148508_uuvdzdfiwcp.js"></script>
+    <script src="//at.alicdn.com/t/font_1148508_wj3jdsubuhb.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link type="text/css" rel="stylesheet" href="./index.css"/>
@@ -12,18 +12,33 @@
 <body>
     <canvas id="canvas_" width=300 height=300></canvas>
     <div id="actions" class="actions">
-        <svg class="icon" id = eraser>
+        <svg class="icon" id=eraser>
             <use xlink:href="#icon-xiangpica"></use>
         </svg>
-        <svg class="icon active" id = pen>
+        <svg class="icon active" id=pen>
             <use xlink:href="#icon-pen"></use>
         </svg>
+        <svg class="icon" id=clear>
+            <use xlink:href="#icon-lajitong"></use>
+        </svg>
+        <svg class="icon" id=save>
+            <use xlink:href="#icon-save"></use>
+        </svg>
     </div>
+    
     <ol class="colors">
-        <li id = red class="red active"></li>
-        <li id = green class="green"></li>
-        <li id = blue class="blue"></li>
+        <li id=red class="red active"></li>
+        <li id=green class="green"></li>
+        <li id=blue class="blue"></li>
     </ol>
+    
+    <ol class="spec">
+        <li id=small class="small"></li>
+        <li id=mid class="mid"></li>
+        <li id=large class="large"></li>
+    </ol>
+
+
     <script type="text/javascript" src="./canvas.js"></script>
 </body>
 </html>

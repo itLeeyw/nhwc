@@ -67,3 +67,8 @@ ul,ol{
 .colors > li.blue{
     background: blue;
 }
+.spec{position: fixed;right: 0;top: 35px;}
+.spec > li{margin:10px 0;}
+.spec > .small{width: 10px;height: 10px; background: black}
+.spec > .mid{width: 15px;height: 15px; background: black}
+.spec > .large{width: 25px;height: 25px; background: black}
