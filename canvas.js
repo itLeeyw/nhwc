@@ -1,5 +1,7 @@
+document.body.ontouchstart = function(e){
+    e.preventDefault()
+}
 var _canvas = document.getElementById("canvas_")//获取画布id
-
 var context = _canvas.getContext('2d')//获取二维上下文
 var linewidth = 10;//默认线粗
 var eraserEnabled = false

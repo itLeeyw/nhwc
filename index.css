@@ -17,6 +17,9 @@ ul,ol{
 #canvas_{
     display: block; 
     background: gainsboro;
+    position: fixed;
+    top:0;
+    left: 0;
 }
 
 .actions{
