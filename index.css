@@ -1,22 +1,69 @@
-body{
+ul,ol{
+    list-style: none;
+}
+*{
     /* 因为body的默认边界为8px */
     margin: 0;
 }
+.icon {
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
+
 #canvas_{
+    display: block; 
     background: gainsboro;
 }
 
 .actions{
     position: fixed;
     left: 0;
-    bottom: 0;
+    top: 0;
+    padding: 20px;
 }
-.actions > #brush{
-    display: none;
+.actions svg{
+    width: 1.5em;
+    height: 1.5em;
+    transition: all 0.3s;
+    margin: 0 10px ;
 }
-.actions.x > #brush{
-    display: inline-block;
+
+.actions svg.active{
+    fill: red;
+    transform: scale(1.5);
 }
-.actions.x > #eraser{
-    display: none;
+
+.colors{
+    position: fixed;
+    top: 100px;
+    left: -20px;
+}
+
+.colors > li{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 10px 0;
+    transition: all 0.3s;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+}
+.colors > li.active{
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+    transform: scale(1.2)
+}
+
+.colors > li.red{
+    background: red;
+}
+
+.colors > li.green{
+    background: green;
+}
+
+.colors > li.blue{
+    background: blue;
 }
