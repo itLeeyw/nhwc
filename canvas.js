@@ -21,27 +21,34 @@ eraser.onclick = function(){
 
 colors = [red,green,blue]
 
-red.onclick = function(){
+context.fillStyle = 'red'
+context.strokeStyle = 'red'
+red.onclick = function(){     
+    // context.fillStyle = 'red'
+    // context.strokeStyle = 'red'
     onColor(red);
-    
 }
 green.onclick = function(){
+    context.fillStyle = 'green'
+    context.strokeStyle = 'green'
     onColor(green);
 }
 blue.onclick = function(){
+    context.fillStyle = 'blue'
+    context.strokeStyle = 'blue'
     onColor(blue);
 }
 
 
 function onColor(c){
-    context.fillStyle = 'c'
-    context.strokeStyle = 'c'
-    c.classList.add('active')
     len = colors.length;
     for(i = 0; i < len; i++)
         if(c != colors[i]){
+            console.log(colors[i])
             colors[i].classList.remove('active')
         }
+    c.classList.add('active')
+
 }
 
 function autoSetCanvasSize(canvas){//自动设置canvas大小
