@@ -53,14 +53,11 @@ save.onclick = function(){
 }
 
 var colorsSelector = [red,green,blue,white,gray,black,aqua,fuchsia,salmonpink]
-colorsSelector.forEach(elemet => elemet.onclick = function(x){// => lambda函数将elemet作为函数使用
-    len = colorsSelector.length;
-    for(i = 0; i < len; i++){
-        activeColor = elemet.id;
-        context.fillStyle = activeColor;
-        context.strokeStyle = activeColor;
-        onColor(elemet)
-    }
+colorsSelector.forEach(element => element.onclick = function(x){// => lambda函数将element作为函数使用
+    activeColor = element.id;
+    context.fillStyle = activeColor;
+    context.strokeStyle = activeColor;
+    onColor(element)
 })
 
 
