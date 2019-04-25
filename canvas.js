@@ -52,10 +52,10 @@ save.onclick = function(){
     _a.click()
 }
 
-colors = [red,green,blue]
-red.onclick = function(){     
-    context.fillStyle = 'red'
-    context.strokeStyle = 'red'
+colors = [red,green,blue,white,gray,black,aqua,fuchsia,salmonpink]
+red.onclick = function(e){
+    context.fillStyle = e.path[0].id
+    context.strokeStyle = e.path[0].id
     onColor(red);
 }
 green.onclick = function(){
@@ -68,13 +68,45 @@ blue.onclick = function(){
     context.strokeStyle = 'blue'
     onColor(blue);
 }
+white.onclick = function(){
+    context.fillStyle = 'white'
+    context.strokeStyle = 'white'
+    onColor(white);
+}
+gray.onclick = function(){
+    context.fillStyle = 'gray'
+    context.strokeStyle = 'gray'
+    onColor(gray);
+}
+black.onclick = function(){
+    context.fillStyle = 'black'
+    context.strokeStyle = 'black'
+    onColor(black);
+}
+aqua.onclick = function(){
+    context.fillStyle = 'aqua'
+    context.strokeStyle = 'aqua'
+    onColor(aqua);
+}
+fuchsia.onclick = function(){
+    context.fillStyle = 'fuchsia'
+    context.strokeStyle = 'fuchsia'
+    onColor(fuchsia);
+}
+salmonpink.onclick = function(){
+    context.fillStyle = 'salmonpink'
+    context.strokeStyle = 'salmonpink'
+    onColor(salmonpink);
+}
+
+
 
 
 function onColor(c){
     len = colors.length;
     for(i = 0; i < len; i++)
         if(c != colors[i]){
-            console.log(colors[i])
+            // console.log(colors[i])
             colors[i].classList.remove('active')
         }
     c.classList.add('active')

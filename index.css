@@ -1,5 +1,5 @@
 ul,ol{
-    list-style: none;
+    list-style: none; 
 }
 *{
     /* 因为body的默认边界为8px */
@@ -54,24 +54,62 @@ ul,ol{
     transition: all 0.3s;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
 }
-.colors > li.active{
+td.active{
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
     transform: scale(1.2)
 }
 
-.colors > li.red{
+.spec{position: fixed;left: 16px;top: 173px;}
+.spec > .small{width: 5px;height: 5px; background: black}
+.spec > .mid{width: 10px;height: 10px; background: black}
+.spec > .large{width: 18px;height: 18px; background: black}
+
+.table-attr{
+    position: fixed;
+    
+    left: 10px;
+
+}
+td{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 2px 2px;
+    transition: all 0.3s;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+
+}
+
+td.red{
     background: red;
 }
-
-.colors > li.green{
+td.green{
     background: green;
 }
-
-.colors > li.blue{
+td.blue{
     background: blue;
 }
-.spec{position: fixed;right: 0;top: 35px;}
-.spec > li{margin:10px 0;}
-.spec > .small{width: 10px;height: 10px; background: black}
-.spec > .mid{width: 15px;height: 15px; background: black}
-.spec > .large{width: 25px;height: 25px; background: black}
+td.white{
+    background: white;     
+}
+td.gray{
+    background: gray;
+}
+td.black{
+    background: black;
+}
+td.aqua{
+    background: aqua;
+}
+td.fuchsia{
+    background: fuchsia;
+}
+td.salmonpink{
+    background: salmon;
+}
+.size > td{
+    text-align: center;
+    justify-items: center;
+    font-size: 10px;
+}
