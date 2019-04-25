@@ -65,8 +65,7 @@ td.active{
 .spec > .large{width: 18px;height: 18px; background: black}
 
 .table-attr{
-    position: fixed;
-    
+    position: fixed; 
     left: 10px;
 
 }

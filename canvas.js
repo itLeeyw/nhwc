@@ -52,65 +52,26 @@ save.onclick = function(){
     _a.click()
 }
 
-colors = [red,green,blue,white,gray,black,aqua,fuchsia,salmonpink]
-red.onclick = function(e){
-    context.fillStyle = e.path[0].id
-    context.strokeStyle = e.path[0].id
-    onColor(red);
-}
-green.onclick = function(){
-    context.fillStyle = 'green'
-    context.strokeStyle = 'green'
-    onColor(green);
-}
-blue.onclick = function(){
-    context.fillStyle = 'blue'
-    context.strokeStyle = 'blue'
-    onColor(blue);
-}
-white.onclick = function(){
-    context.fillStyle = 'white'
-    context.strokeStyle = 'white'
-    onColor(white);
-}
-gray.onclick = function(){
-    context.fillStyle = 'gray'
-    context.strokeStyle = 'gray'
-    onColor(gray);
-}
-black.onclick = function(){
-    context.fillStyle = 'black'
-    context.strokeStyle = 'black'
-    onColor(black);
-}
-aqua.onclick = function(){
-    context.fillStyle = 'aqua'
-    context.strokeStyle = 'aqua'
-    onColor(aqua);
-}
-fuchsia.onclick = function(){
-    context.fillStyle = 'fuchsia'
-    context.strokeStyle = 'fuchsia'
-    onColor(fuchsia);
-}
-salmonpink.onclick = function(){
-    context.fillStyle = 'salmonpink'
-    context.strokeStyle = 'salmonpink'
-    onColor(salmonpink);
-}
-
-
+var colorsSelector = [red,green,blue,white,gray,black,aqua,fuchsia,salmonpink]
+colorsSelector.forEach(elemet => elemet.onclick = function(x){// => lambda函数将elemet作为函数使用
+    len = colorsSelector.length;
+    for(i = 0; i < len; i++){
+        activeColor = elemet.id;
+        context.fillStyle = activeColor;
+        context.strokeStyle = activeColor;
+        onColor(elemet)
+    }
+})
 
 
 function onColor(c){
-    len = colors.length;
+    len = colorsSelector.length;
     for(i = 0; i < len; i++)
-        if(c != colors[i]){
+        if(c != colorsSelector[i]){
             // console.log(colors[i])
-            colors[i].classList.remove('active')
+            colorsSelector[i].classList.remove('active')
         }
-    c.classList.add('active')
-
+        c.classList.add('active')
 }
 
 function autoSetCanvasSize(canvas){//自动设置canvas大小
